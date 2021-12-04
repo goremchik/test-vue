@@ -1,0 +1,11 @@
+@mixin container() {
+    max-width: $desktop-width;
+    width: 100%;
+    margin: auto;
+}
+
+@mixin container-small() {
+    max-width: $tablet-width;
+    width: 100%;
+    margin: auto;
+}

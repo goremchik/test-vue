@@ -1,0 +1,12 @@
+.icon {
+  font-family: 'Font Awesome';
+  font-weight: 400;
+}
+
+.icon--search {
+  font-weight: 900;
+
+  &::before {
+    content: '\f002';
+  }
+}
