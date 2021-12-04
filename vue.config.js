@@ -9,4 +9,11 @@ module.exports = {
         pngquant: { quality: [0.65, 0.9], speed: 4 },
       }));
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/assets/styles/common/index.scss";`,
+      },
+    },
+  },
 };

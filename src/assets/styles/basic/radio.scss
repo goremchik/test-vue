@@ -1,0 +1,31 @@
+.radio {
+  display: flex;
+
+  &__field {
+    display: none;
+  }
+
+  &__label {
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: rgba($grey1, 0.5);
+  }
+
+  &__field:checked ~ &__label {
+    background-color: $primary;
+  }
+
+  &__item {
+    overflow: hidden;
+
+    &:first-child {
+      border-radius: 3px 0 0 3px;
+    }
+  
+    &:last-child {
+      border-radius: 0 3px 3px 0;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.input {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__label {
+    width: 100%;
+  }
+
+  &__field {
+    flex-grow: 1;
+    background-color: rgba($black, 0.7);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    color: $white;
+    font-size: 16px;
+
+    &::placeholder {
+      color: $grey1;
+      font-size: 16px;
+    }
+  }
+
+  &__button {
+    color: $white;
+    background-color: $primary;
+    text-transform: uppercase;
+    min-width: 180px;
+    margin-left: 10px;
+    font-size: 16px;
+  }
+}
