@@ -1,0 +1,32 @@
+@import './icons';
+@import './header';
+
+.info {
+  background-color: $grey2;
+  padding: 15px 0;
+
+  &__genre {
+    @include container-small;
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 0;
+  }
+
+  &__sort {
+    @include container-small;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.main {
+  &__container {
+    @include container;
+    padding: 50px 0 10px;
+  }
+}
+
+.page {
+  padding-bottom: $footer-height;
+}

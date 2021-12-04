@@ -1,0 +1,28 @@
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__input {
+    width: 100%;
+  }
+
+  .input {
+    &__label {
+      text-transform: uppercase;
+      font-size: 32px;
+      padding-bottom: 40px;
+    }
+  }
+
+  &__search-by-label {
+    text-transform: uppercase;
+    padding-top: 10px;
+    font-size: 14px;
+    padding-right: 15px;
+  }
+
+  &__radio {
+    padding-top: 10px;
+  }
+}

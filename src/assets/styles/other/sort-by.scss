@@ -1,0 +1,10 @@
+.sort-by {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    text-transform: uppercase;
+    padding-right: 15px;
+    font-size: 14px;
+  }
+}
