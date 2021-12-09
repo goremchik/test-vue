@@ -10,15 +10,9 @@
       <p class="movie-details__rating">{{ movie.rating }}</p>
       <p class="movie-details__genre">{{ movie.genres.join(', ') }}</p>
       <p class="movie-details__date">
-        <span class="movie-details__value">
-          {{ movie.releaseDate.getFullYear() }}
-        </span>
-        <span class="movie-details__label">year</span>
+        {{ movie.releaseDate.getFullYear() }}
       </p>
-      <p class="movie-details__duration">
-        <span class="movie-details__value">{{ movie.duration }}</span>
-        <span class="movie-details__label">min</span>
-      </p>
+      <p class="movie-details__duration">{{ movie.duration }}min</p>
       <p class="movie-details__description">{{ movie.description }}</p>
     </div>
   </div>

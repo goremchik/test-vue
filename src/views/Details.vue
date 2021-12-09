@@ -1,8 +1,8 @@
 <template>
   <div class="details">
-    <section class="header">
+    <section class="header header--simplified">
       <div class="header__container">
-        <nr-logo></nr-logo>
+        <nr-logo class="logo--simplified"></nr-logo>
         <router-link
           to="/"
           class="header__icon icon icon--search"
@@ -13,13 +13,12 @@
         ></nr-movie-details>
       </div>
     </section>
-    <section class="info">
-      <div class="info__genre">
-        Films by {{ movie.genres.join(', ') }} genre
-      </div>
-    </section>
     <main class="main">
-      <nr-movies-container class="main__container"></nr-movies-container>
+      <div class="main__navigation">
+        <nr-search-by></nr-search-by>
+        <nr-sort-by></nr-sort-by>
+      </div>
+      <nr-movies-container class="main__movies"></nr-movies-container>
     </main>
   </div>
 </template>
@@ -28,15 +27,19 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { IMovie } from '@/types';
 import movie from '@/mock/movie';
-import Logo from '@/components/structure/Logo.vue';
-import MoviesDetails from '@/components/movie/MovieDetails.vue';
-import MoviesContainer from '@/components/movie/MoviesContainer.vue';
+import NrLogo from '@/components/structure/Logo.vue';
+import NrMovieDetails from '@/components/movie/MovieDetails.vue';
+import NrSearchBy from '@/components/other/SearchBy.vue';
+import NrSortBy from '@/components/other/SortBy.vue';
+import NrMoviesContainer from '@/components/movie/MoviesContainer.vue';
 
 @Component({
   components: {
-    'nr-logo': Logo,
-    'nr-movie-details': MoviesDetails,
-    'nr-movies-container': MoviesContainer,
+    NrLogo,
+    NrSortBy,
+    NrSearchBy,
+    NrMovieDetails,
+    NrMoviesContainer,
   },
 })
 export default class Details extends Vue {

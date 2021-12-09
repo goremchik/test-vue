@@ -9,7 +9,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({ name: 'nr-logo' })
-export default class Logo extends Vue {}
+export default class NrLogo extends Vue {}
 </script>
 
 <style lang="scss">

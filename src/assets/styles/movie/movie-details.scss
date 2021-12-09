@@ -2,18 +2,19 @@
   display: flex;
 
   &__image {
-    height: 400px;
+    height: 485px;
     margin-right: 50px;
 
     &.image > img {
-      max-width: 270px;
+      max-width: 330px;
       object-fit: cover;
       width: auto;
     }
   }
 
   &__title {
-    font-size: 36px;
+    font-size: 40px;letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   &__container {
@@ -26,37 +27,35 @@
   &__genre {
     width: 100%;
     font-size: 14px;
-    padding: 20px 0 30px;
+    padding: 4px 0 30px;
+    opacity: 0.5;
   }
 
-  &__value {
+  &__date, &__duration {
     color: $primary;
-    font-size: 22px;
-  }
-
-  &__label {
-    margin-left: 3px;
-    font-size: 14px;
+    font-size: 24px;
   }
 
   &__date {
-    margin-right: 30px;
+    margin-right: 51px;
   }
 
   &__description {
-    margin-top: 30px;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 29px;
+    opacity: 0.5;
   }
 
   &__rating {
     border-radius: 50%;
     border: 1px solid $white;
-    font-size: 24px;
-    color: $rating;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     margin-left: 20px;
   }
 }

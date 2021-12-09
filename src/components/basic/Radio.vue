@@ -1,5 +1,5 @@
 <template>
-  <ul class="radio">
+  <ul :class="'radio radio--' + type">
     <li class="radio__item" v-for="item in items" :key="item.value">
       <label>
         <input
@@ -22,6 +22,7 @@ import { IRadio } from '@/types';
 export default class NrRadio extends Vue {
   @Prop({ default: [] }) items!: IRadio[];
   @Prop({ default: '' }) defaultValue!: string;
+  @Prop({ default: 'button' }) type!: string;
   @Prop({ required: true }) name!: string;
 }
 </script>

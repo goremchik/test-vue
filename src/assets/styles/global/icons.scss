@@ -10,3 +10,19 @@
     content: '\f002';
   }
 }
+
+.icon--arrow {
+  font-weight: 900;
+
+  &::before {
+    content: '\f0dd';
+  }
+}
+
+.icon--cross {
+  font-weight: 900;
+
+  &::before {
+    content: '\f00d';
+  }
+}

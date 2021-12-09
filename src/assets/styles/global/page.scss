@@ -1,29 +1,19 @@
 @import './icons';
 @import './header';
 
-.info {
-  background-color: $grey2;
-  padding: 15px 0;
-
-  &__genre {
-    @include container-small;
-    display: flex;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 10px 0;
-  }
-
-  &__sort {
-    @include container-small;
-    display: flex;
-    justify-content: end;
-  }
-}
-
 .main {
-  &__container {
-    @include container;
-    padding: 50px 0 10px;
+  @include container;
+  background-color: $black;
+  padding: 0 0 43px;
+  
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #424242;
+    box-shadow: 0 2px 0 #080707;
+    margin-bottom: 25px;
+    position: relative;
+    align-items: center;
   }
 }
 

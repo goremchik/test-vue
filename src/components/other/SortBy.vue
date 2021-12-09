@@ -1,26 +1,26 @@
 <template>
   <div class="sort-by">
     <p class="sort-by__text">Sort by</p>
-    <nr-radio
-      class="sort-by__radio"
+    <nr-select
+      class="sort-by__selct"
       name="sort-by"
       :items="[
         { value: 'release', text: 'Release date' },
         { value: 'rating', text: 'Rating' },
       ]"
-    ></nr-radio>
+    ></nr-select>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Radio from '../basic/Radio.vue';
+import NrSelect from '../basic/Select.vue';
 
 @Component({
   name: 'nr-sort-by',
-  components: { 'nr-radio': Radio },
+  components: { NrSelect },
 })
-export default class SortBy extends Vue {}
+export default class NrSortBy extends Vue {}
 </script>
 
 <style lang="scss">

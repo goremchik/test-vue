@@ -3,31 +3,37 @@
     <section class="header">
       <div class="header__container">
         <nr-logo></nr-logo>
+        <nr-add-movie></nr-add-movie>
       </div>
       <nr-search class="header__search"></nr-search>
     </section>
-    <section class="info">
-      <nr-sort-by class="info__sort"></nr-sort-by>
-    </section>
     <main class="main">
-      <nr-movies-container class="main__container"></nr-movies-container>
+      <div class="main__navigation">
+        <nr-search-by></nr-search-by>
+        <nr-sort-by></nr-sort-by>
+      </div>
+      <nr-movies-container class="main__movies"></nr-movies-container>
     </main>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Logo from '@/components/structure/Logo.vue';
-import Search from '@/components/other/Search.vue';
-import SortBy from '@/components/other/SortBy.vue';
-import MoviesContainer from '@/components/movie/MoviesContainer.vue';
+import NrLogo from '@/components/structure/Logo.vue';
+import NrSearch from '@/components/other/Search.vue';
+import NrSearchBy from '@/components/other/SearchBy.vue';
+import NrSortBy from '@/components/other/SortBy.vue';
+import NrMoviesContainer from '@/components/movie/MoviesContainer.vue';
+import NrAddMovie from '@/components/movie/AddMovie.vue';
 
 @Component({
   components: {
-    'nr-logo': Logo,
-    'nr-search': Search,
-    'nr-sort-by': SortBy,
-    'nr-movies-container': MoviesContainer,
+    NrLogo,
+    NrSearch,
+    NrSortBy,
+    NrSearchBy,
+    NrMoviesContainer,
+    NrAddMovie,
   },
 })
 export default class Home extends Vue {}
