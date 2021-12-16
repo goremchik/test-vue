@@ -1,11 +1,17 @@
 <template>
-  <div class="home">
-    <section class="header">
+  <div class="details">
+    <section class="header header--simplified">
       <div class="header__container">
-        <nr-logo></nr-logo>
-        <nr-add-movie></nr-add-movie>
+        <nr-logo class="logo--simplified"></nr-logo>
+        <router-link
+          to="/"
+          class="header__icon icon icon--search"
+        ></router-link>
+        <nr-movie-details
+          :movie="movie"
+          class="header__details"
+        ></nr-movie-details>
       </div>
-      <nr-search class="header__search"></nr-search>
     </section>
     <main class="main">
       <div class="main__navigation">
@@ -19,22 +25,24 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { IMovie } from '@/types';
+import movie from '@/mock/movie';
 import NrLogo from '@/components/structure/Logo.vue';
-import NrSearch from '@/components/other/Search.vue';
+import NrMovieDetails from '@/components/movie/MovieDetails.vue';
 import NrSearchBy from '@/components/other/SearchBy.vue';
 import NrSortBy from '@/components/other/SortBy.vue';
 import NrMoviesContainer from '@/components/movie/MoviesContainer.vue';
-import NrAddMovie from '@/components/movie/AddMovie.vue';
 
 @Component({
   components: {
     NrLogo,
-    NrSearch,
     NrSortBy,
     NrSearchBy,
+    NrMovieDetails,
     NrMoviesContainer,
-    NrAddMovie,
   },
 })
-export default class Home extends Vue {}
+export default class Details extends Vue {
+  movie: IMovie = movie;
+}
 </script>

@@ -1,0 +1,11 @@
+.sort-by {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    text-transform: uppercase;
+    padding-right: 35px;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+}

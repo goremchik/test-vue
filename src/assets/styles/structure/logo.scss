@@ -1,0 +1,15 @@
+.logo {
+  color: $primary;
+  text-decoration: none;
+  font-size: 20px;
+  line-height: 24px;
+
+  &__first {
+    font-weight: 900;
+
+    .logo--simplified & {
+      font-weight: 400;
+    }
+  }
+
+}

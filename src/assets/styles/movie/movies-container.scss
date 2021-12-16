@@ -1,0 +1,22 @@
+.movies {
+  
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: 320px;
+    margin-bottom: 50px;
+  }
+
+  &__info {
+    font-size: 20px;
+    margin-bottom: 28px;
+  }
+
+  &__highlight {
+    font-weight: 900;
+  }
+}
