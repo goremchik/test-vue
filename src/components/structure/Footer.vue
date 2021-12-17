@@ -6,11 +6,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Logo from './Logo.vue';
+import NrLogo from './Logo.vue';
 
 @Component({
   name: 'nr-footer',
-  components: { 'nr-logo': Logo },
+  components: { NrLogo },
 })
 export default class Footer extends Vue {}
 </script>

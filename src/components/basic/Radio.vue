@@ -16,11 +16,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { IRadio } from '@/types';
+import { ISelectable } from '@/types';
 
 @Component({ name: 'nr-radio' })
 export default class NrRadio extends Vue {
-  @Prop({ default: [] }) items!: IRadio[];
+  @Prop({ default: [] }) items!: ISelectable[];
   @Prop({ default: '' }) defaultValue!: string;
   @Prop({ default: 'button' }) type!: string;
   @Prop({ required: true }) name!: string;

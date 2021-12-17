@@ -7,6 +7,7 @@
       label="Find your movie"
       placeholder="Search"
       @clicked="onSearch"
+      @changed="onChange"
     ></nr-input>
   </form>
 </template>
@@ -20,8 +21,12 @@ import NrInput from '../basic/Input.vue';
   components: { NrInput },
 })
 export default class NrSearch extends Vue {
-  onSearch(data: any): void {
-    console.log(data);
+  onSearch(data: unknown): void {
+    console.log('In search click', data);
+  }
+
+  onChange(data: unknown): void {
+    console.log('In search cahnge', data);
   }
 }
 </script>

@@ -7,12 +7,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Footer from './components/structure/Footer.vue';
+import NrFooter from './components/structure/Footer.vue';
 
 @Component({
-  components: {
-    'nr-footer': Footer,
-  },
+  components: { NrFooter },
 })
 export default class App extends Vue {}
 </script>

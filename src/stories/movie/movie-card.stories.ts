@@ -3,7 +3,7 @@ import movie from '@/mock/movie';
 
 export default { title: 'MovieCard' };
 
-export const movieCard = (args: any): unknown => ({
+export const movieCard = (): unknown => ({
   components: { NrMovieCard },
   computed: {
     args: () => ({ movie }),

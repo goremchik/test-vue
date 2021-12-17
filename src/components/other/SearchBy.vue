@@ -16,11 +16,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Radio from '../basic/Radio.vue';
+import NrRadio from '../basic/Radio.vue';
 
 @Component({
   name: 'nr-search-by',
-  components: { 'nr-radio': Radio },
+  components: { NrRadio },
 })
 export default class NrSearchBy extends Vue {}
 </script>

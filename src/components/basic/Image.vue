@@ -1,6 +1,6 @@
 <template>
   <picture class="image">
-    <img :src="src" :alt="alt" />
+    <img :data-src="src" :alt="alt" v-img-lazy-load />
   </picture>
 </template>
 
