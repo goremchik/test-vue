@@ -1,23 +1,17 @@
 <template>
   <div class="movies">
-    <nr-context-menu :display="showContextMenu" ref="menu">
-      <ul>
-        <li>Edit</li>
-        <li>Delete</li>
-      </ul>
-    </nr-context-menu>
+    <nr-movie-context :showContextMenu="showContextMenu" ref="menu">
+    </nr-movie-context>
     <p class="movies__info">
       <span class="movies__highlight">{{ movies.length }}</span>
       movies found
     </p>
     <ul class="movies__list">
-      <li
-        class="movies__item"
-        v-for="movie in movies"
-        :key="movie.id"
-        @contextmenu="openContextMenu"
-      >
-        <nr-movie-card :movie="movie"></nr-movie-card>
+      <li class="movies__item" v-for="movie in movies" :key="movie.id">
+        <nr-movie-card
+          :movie="movie"
+          @moviecontext="openContextMenu($event, movie)"
+        ></nr-movie-card>
       </li>
     </ul>
   </div>
@@ -28,19 +22,18 @@ import { Component, Vue } from 'vue-property-decorator';
 import { IMovie } from '@/types';
 import movies from '@/mock/movies';
 import NrMovieCard from './MovieCard.vue';
-import NrContextMenu from '../basic/ContextMenu.vue';
+import NrMovieContext from './MovieContext.vue';
 
 @Component({
   name: 'nr-movies-container',
-  components: { NrMovieCard, NrContextMenu },
+  components: { NrMovieCard, NrMovieContext },
 })
 export default class NrSortBy extends Vue {
   movies: IMovie[] = movies;
   showContextMenu = false;
 
-  openContextMenu(e: MouseEvent): void {
-    e.preventDefault();
-    (this.$refs.menu as any).open(e);
+  openContextMenu(e: MouseEvent, movie: IMovie): void {
+    (this.$refs.menu as NrMovieContext).open(e, movie);
   }
 }
 </script>

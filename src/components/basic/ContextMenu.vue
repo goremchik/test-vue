@@ -23,7 +23,7 @@ export default class NrContextMenu extends Vue {
   top = 0;
   show = false;
 
-  get style(): any {
+  get style(): Record<string, string> {
     return {
       top: this.top + 'px',
       left: this.left + 'px',
@@ -37,6 +37,7 @@ export default class NrContextMenu extends Vue {
   }
 
   open(evt: MouseEvent): void {
+    evt.preventDefault();
     this.left = evt.pageX || evt.clientX;
     this.top = evt.pageY || evt.clientY;
 

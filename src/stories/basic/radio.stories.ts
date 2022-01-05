@@ -1,8 +1,9 @@
 import NrRadio from '@/components/basic/Radio.vue';
+import { ISelectable } from '@/types';
 
 export default { title: 'Radio' };
 
-const items: any[] = [
+const items: ISelectable[] = [
   { text: 'text1', value: 'value1' },
   { text: 'text2', value: 'value2' },
   { text: 'text3', value: 'value3' },

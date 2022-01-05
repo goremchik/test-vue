@@ -6,12 +6,13 @@
       v-model="value"
       :placeholder="placeholder"
       :name="name"
+      @input="onInputChange(value)"
     />
     <nr-button
       type="button"
       class="input__button"
       v-if="button"
-      v-on:click="onButtonClick"
+      @clicked="onButtonClick(value)"
     >
       {{ button }}
     </nr-button>
@@ -19,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
 import NrButton from './Button.vue';
 
 @Component({
@@ -33,8 +34,14 @@ export default class NrInput extends Vue {
   @Prop({ required: true }) name!: string;
   value = '';
 
+  @Emit('clicked')
   onButtonClick(): void {
-    this.$emit('clicked', this.value);
+    // Empty
+  }
+
+  @Emit('changed')
+  onInputChange(): void {
+    // Empty
   }
 }
 </script>

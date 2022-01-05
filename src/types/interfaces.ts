@@ -1,4 +1,4 @@
-export interface IRadio {
+export interface ISelectable {
   value: string;
   text: string;
 }
