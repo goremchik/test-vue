@@ -20,17 +20,25 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { IMovie } from '@/types';
-import movies from '@/mock/movies';
+import { Action, Getter } from 'vuex-class';
 import NrMovieCard from './MovieCard.vue';
 import NrMovieContext from './MovieContext.vue';
+import { MoviesActions } from '@/store/modules/movies/actions';
 
 @Component({
   name: 'nr-movies-container',
   components: { NrMovieCard, NrMovieContext },
 })
 export default class NrSortBy extends Vue {
-  movies: IMovie[] = movies;
   showContextMenu = false;
+
+  @Getter('movies', { namespace: 'movies' }) movies!: IMovie[];
+  @Action('loadMovies', { namespace: 'movies' })
+  loadMovies!: MoviesActions<'loadMovies'>;
+
+  mounted(): void {
+    this.loadMovies();
+  }
 
   openContextMenu(e: MouseEvent, movie: IMovie): void {
     (this.$refs.menu as NrMovieContext).open(e, movie);

@@ -8,6 +8,7 @@
           class="header__icon icon icon--search"
         ></router-link>
         <nr-movie-details
+          v-if="movie"
           :movie="movie"
           class="header__details"
         ></nr-movie-details>
@@ -24,14 +25,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import { IMovie } from '@/types';
-import movie from '@/mock/movie';
 import NrLogo from '@/components/structure/Logo.vue';
 import NrMovieDetails from '@/components/movie/MovieDetails.vue';
 import NrSearchBy from '@/components/other/SearchBy.vue';
 import NrSortBy from '@/components/other/SortBy.vue';
 import NrMoviesContainer from '@/components/movie/MoviesContainer.vue';
+import { Mutation, Getter } from 'vuex-class';
+import { Route } from 'vue-router';
 
 @Component({
   components: {
@@ -43,6 +45,17 @@ import NrMoviesContainer from '@/components/movie/MoviesContainer.vue';
   },
 })
 export default class Details extends Vue {
-  movie: IMovie = movie;
+  @Getter('selectedMovie', { namespace: 'movies' }) movie!: IMovie;
+  @Mutation('selectMovie', { namespace: 'movies' })
+  selectMovie!: (id: string) => void;
+
+  @Watch('$route')
+  onUrlChange({ params }: Route): void {
+    this.selectMovie(params.id);
+  }
+
+  mounted(): void {
+    this.onUrlChange(this.$route);
+  }
 }
 </script>
