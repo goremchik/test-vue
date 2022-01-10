@@ -34,6 +34,12 @@ import NrSortBy from '@/components/other/SortBy.vue';
 import NrMoviesContainer from '@/components/movie/MoviesContainer.vue';
 import { Mutation, Getter } from 'vuex-class';
 import { Route } from 'vue-router';
+import { moviesStoreKey as namespace } from '@/store/modules/movies/state';
+import { MoviesGetterKeys } from '@/store/modules/movies/getters';
+import {
+  MoviesMutationKeys,
+  MoviesMutations,
+} from '@/store/modules/movies/mutations';
 
 @Component({
   components: {
@@ -45,9 +51,9 @@ import { Route } from 'vue-router';
   },
 })
 export default class Details extends Vue {
-  @Getter('selectedMovie', { namespace: 'movies' }) movie!: IMovie;
-  @Mutation('selectMovie', { namespace: 'movies' })
-  selectMovie!: (id: string) => void;
+  @Getter(MoviesGetterKeys.selectedMovie, { namespace }) movie!: IMovie;
+  @Mutation(MoviesMutationKeys.selectMovie, { namespace })
+  selectMovie!: MoviesMutations<MoviesMutationKeys.selectMovie>;
 
   @Watch('$route')
   onUrlChange({ params }: Route): void {

@@ -1,15 +1,39 @@
 import { MoviesState } from './state';
 import { IMovie } from '@/types';
+import { Getters } from '@/store/types';
+
+export enum MoviesGetterKeys {
+  movies = 'movies',
+  genres = 'genres',
+  search = 'search',
+  searchBy = 'searchBy',
+  sortBy = 'sortBy',
+  moviesNumber = 'moviesNumber',
+  selectedMovie = 'find',
+}
 
 export const getters = {
-  movies: (state: MoviesState): IMovie[] => state.movies,
-  genres: (state: MoviesState): string[] => state.genres || [],
-  search: (state: MoviesState): string => state.search || '',
-  searchBy: (state: MoviesState): string => state.searchBy || '',
-  sortBy: (state: MoviesState): string => state.sortBy || '',
-  moviesNumber: (_: MoviesState, movieGetters: any): number =>
-    movieGetters.movies.length,
-  selectedMovie: (state: MoviesState, movieGetters: any): IMovie | null =>
+  [MoviesGetterKeys.movies]: (state: MoviesState): IMovie[] =>
+    state.movies || [],
+  [MoviesGetterKeys.genres]: (state: MoviesState): string[] =>
+    state.genres || [],
+  [MoviesGetterKeys.search]: (state: MoviesState): string => state.search || '',
+  [MoviesGetterKeys.searchBy]: (state: MoviesState): string =>
+    state.searchBy || '',
+  [MoviesGetterKeys.sortBy]: (state: MoviesState): string => state.sortBy || '',
+  [MoviesGetterKeys.moviesNumber]: (
+    _: MoviesState,
+    movieGetters: any
+  ): number => movieGetters.movies.length,
+  [MoviesGetterKeys.selectedMovie]: (
+    state: MoviesState,
+    movieGetters: any
+  ): IMovie | null =>
     movieGetters.movies.find(({ id }: any) => id === state.selectedMovieId) ||
     null,
 };
+
+export type MoviesGetters<K extends MoviesGetterKeys> = Getters<
+  typeof getters,
+  K
+>;

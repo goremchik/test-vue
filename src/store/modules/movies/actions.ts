@@ -1,12 +1,17 @@
-import { MovieMutationKeys, MovieMutationArguments } from './mutations';
+import { MoviesMutationKeys, MovieMutationArguments } from './mutations';
 import movies from '@/mock/movies';
 import { IMovie, IBareMovie } from '@/types';
 import { Actions } from '@/store/types';
 
+export enum MoviesActionKeys {
+  loadMovies = 'loadMovies',
+  loadGenres = 'loadGenres',
+}
+
 export type MoviesContext = {
-  commit<K extends MovieMutationKeys>(
-    key: K,
-    payload: MovieMutationArguments<K>
+  commit(
+    key: MoviesMutationKeys,
+    payload: MovieMutationArguments<MoviesMutationKeys>
   ): void;
   getters: any;
 };
@@ -23,8 +28,8 @@ const movieMapper = (item: IBareMovie): IMovie => ({
 });
 
 export const actions = {
-  async loadMovies({ commit, getters }: MoviesContext): Promise<void> {
-    const { search, searchBy, sortBy } = getters;
+  async [MoviesActionKeys.loadMovies](ctx: MoviesContext): Promise<void> {
+    const { search, searchBy, sortBy } = ctx.getters;
     const searchLower = search.toLowerCase();
     // TODO: this is temporary logic (will be replaced with API call)
     const data = movies
@@ -48,14 +53,16 @@ export const actions = {
         return 0;
       });
     }
-    commit('setMovies', data);
+    ctx.commit(MoviesMutationKeys.setMovies, data);
   },
 
-  async loadGenres({ commit }: MoviesContext): Promise<void> {
+  async [MoviesActionKeys.loadGenres](ctx: MoviesContext): Promise<void> {
     const genres = movies.map(({ genres = [] }) => genres).flat();
-    commit('setGenres', [...new Set(genres)]);
+    ctx.commit(MoviesMutationKeys.setGenres, [...new Set(genres)]);
   },
 };
 
-type Type = typeof actions;
-export type MoviesActions<K extends keyof Type> = Actions<Type, K>;
+export type MoviesActions<K extends MoviesActionKeys> = Actions<
+  typeof actions,
+  K
+>;

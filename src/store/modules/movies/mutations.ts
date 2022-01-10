@@ -1,29 +1,47 @@
 import { MoviesState } from './state';
 import { IMovie } from '@/types';
+import { MutationArguments, Mutations } from '@/store/types';
+
+export enum MoviesMutationKeys {
+  setMovies = 'setMovies',
+  setGenres = 'setGenres',
+  setSearch = 'setSearch',
+  setSearchBy = 'setSearchBy',
+  setSortBy = 'setSortBy',
+  selectMovie = 'selectMovie',
+}
 
 export const mutations = {
-  setMovies(state: MoviesState, movies: IMovie[] = []): void {
+  [MoviesMutationKeys.setMovies](
+    state: MoviesState,
+    movies: IMovie[] = []
+  ): void {
     state.movies = movies;
   },
-  setGenres(state: MoviesState, genres: string[] = []): void {
+  [MoviesMutationKeys.setGenres](
+    state: MoviesState,
+    genres: string[] = []
+  ): void {
     state.genres = genres;
   },
-  setSearch(state: MoviesState, search = ''): void {
+  [MoviesMutationKeys.setSearch](state: MoviesState, search = ''): void {
     state.search = search;
   },
-  setSearchBy(state: MoviesState, searchBy = ''): void {
+  [MoviesMutationKeys.setSearchBy](state: MoviesState, searchBy = ''): void {
     state.searchBy = searchBy;
   },
-  setSortBy(state: MoviesState, sortBy = ''): void {
+  [MoviesMutationKeys.setSortBy](state: MoviesState, sortBy = ''): void {
     state.sortBy = sortBy;
   },
-  selectMovie(state: MoviesState, movieId: string): void {
+  [MoviesMutationKeys.selectMovie](state: MoviesState, movieId: string): void {
     state.selectedMovieId = movieId;
   },
 };
 
-export type MovieMutations = typeof mutations;
-export type MovieMutationKeys = keyof MovieMutations;
-export type MovieMutationArguments<K extends MovieMutationKeys> = Parameters<
-  MovieMutations[K]
->[1];
+export type MovieMutationArguments<K extends MoviesMutationKeys> =
+  MutationArguments<typeof mutations, K>;
+
+export type MoviesMutations<K extends MoviesMutationKeys> = Mutations<
+  typeof mutations,
+  K
+>;

@@ -5,7 +5,6 @@ import { mutations } from './mutations';
 import { actions } from './actions';
 import { RootState } from '@/store/types';
 
-export const moviesStoreKey = 'movies';
 export const moviesStore: Module<MoviesState, RootState> = {
   state,
   getters,

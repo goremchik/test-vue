@@ -17,19 +17,28 @@
 import { Component, Vue } from 'vue-property-decorator';
 import NrInput from '../basic/Input.vue';
 import { Action, Mutation, Getter } from 'vuex-class';
-import { MoviesActions } from '@/store/modules/movies/actions';
+import {
+  MoviesActions,
+  MoviesActionKeys,
+} from '@/store/modules/movies/actions';
 import { debounce } from '@/utils/timeout';
+import {
+  MoviesMutationKeys,
+  MoviesMutations,
+} from '@/store/modules/movies/mutations';
+import { moviesStoreKey as namespace } from '@/store/modules/movies/state';
+import { MoviesGetterKeys } from '@/store/modules/movies/getters';
 
 @Component({
   name: 'nr-search',
   components: { NrInput },
 })
 export default class NrSearch extends Vue {
-  @Getter('search', { namespace: 'movies' }) search!: string;
-  @Action('loadMovies', { namespace: 'movies' })
-  loadMovies!: MoviesActions<'loadMovies'>;
-  @Mutation('setSearch', { namespace: 'movies' })
-  setSearch!: any;
+  @Getter(MoviesGetterKeys.search, { namespace }) search!: string;
+  @Action(MoviesActionKeys.loadMovies, { namespace })
+  loadMovies!: MoviesActions<MoviesActionKeys.loadMovies>;
+  @Mutation(MoviesMutationKeys.setSearch, { namespace })
+  setSearch!: MoviesMutations<MoviesMutationKeys.setSearch>;
 
   onSubmit(e: Event): void {
     e.preventDefault();

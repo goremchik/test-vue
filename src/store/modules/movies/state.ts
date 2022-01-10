@@ -1,5 +1,7 @@
 import { IMovie } from '@/types';
 
+export const moviesStoreKey = 'movies';
+
 export type MoviesState = {
   movies: IMovie[];
   genres: string[];

@@ -16,18 +16,29 @@ import { Component, Vue } from 'vue-property-decorator';
 import NrSelect from '../basic/Select.vue';
 import { ISelectable } from '@/types';
 import { Getter, Action, Mutation } from 'vuex-class';
-import { MoviesActions } from '@/store/modules/movies/actions';
+import {
+  MoviesActions,
+  MoviesActionKeys,
+} from '@/store/modules/movies/actions';
+import {
+  MoviesMutationKeys,
+  MoviesMutations,
+} from '@/store/modules/movies/mutations';
+import { moviesStoreKey as namespace } from '@/store/modules/movies/state';
+import { MoviesGetterKeys } from '@/store/modules/movies/getters';
 
 @Component({
   name: 'nr-sort-by',
   components: { NrSelect },
 })
 export default class NrSortBy extends Vue {
-  @Getter('sortBy', { namespace: 'movies' }) sortBy!: string;
-  @Mutation('setSortBy', { namespace: 'movies' })
-  setSortBy!: any;
-  @Action('loadMovies', { namespace: 'movies' })
-  loadMovies!: MoviesActions<'loadMovies'>;
+  @Getter(MoviesGetterKeys.sortBy, { namespace }) sortBy!: string;
+
+  @Mutation(MoviesMutationKeys.setSortBy, { namespace })
+  setSortBy!: MoviesMutations<MoviesMutationKeys.setSortBy>;
+
+  @Action(MoviesActionKeys.loadMovies, { namespace })
+  loadMovies!: MoviesActions<MoviesActionKeys.loadMovies>;
 
   get options(): ISelectable[] {
     return [

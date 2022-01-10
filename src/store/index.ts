@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { moviesStore, moviesStoreKey } from './modules/movies';
+import { moviesStore } from './modules/movies';
 import { RootState } from './types';
+import { moviesStoreKey } from './modules/movies/state';
 
 Vue.use(Vuex);
 

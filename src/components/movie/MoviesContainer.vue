@@ -23,7 +23,12 @@ import { IMovie } from '@/types';
 import { Action, Getter } from 'vuex-class';
 import NrMovieCard from './MovieCard.vue';
 import NrMovieContext from './MovieContext.vue';
-import { MoviesActions } from '@/store/modules/movies/actions';
+import {
+  MoviesActions,
+  MoviesActionKeys,
+} from '@/store/modules/movies/actions';
+import { moviesStoreKey as namespace } from '@/store/modules/movies/state';
+import { MoviesGetterKeys } from '@/store/modules/movies/getters';
 
 @Component({
   name: 'nr-movies-container',
@@ -32,9 +37,9 @@ import { MoviesActions } from '@/store/modules/movies/actions';
 export default class NrSortBy extends Vue {
   showContextMenu = false;
 
-  @Getter('movies', { namespace: 'movies' }) movies!: IMovie[];
-  @Action('loadMovies', { namespace: 'movies' })
-  loadMovies!: MoviesActions<'loadMovies'>;
+  @Getter(MoviesGetterKeys.movies, { namespace }) movies!: IMovie[];
+  @Action(MoviesActionKeys.loadMovies, { namespace })
+  loadMovies!: MoviesActions<MoviesActionKeys.loadMovies>;
 
   mounted(): void {
     this.loadMovies();

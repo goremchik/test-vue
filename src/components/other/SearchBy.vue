@@ -13,21 +13,34 @@
 import { Component, Vue } from 'vue-property-decorator';
 import NrRadio from '../basic/Radio.vue';
 import { Getter, Mutation, Action } from 'vuex-class';
-import { MoviesActions } from '@/store/modules/movies/actions';
+import {
+  MoviesActions,
+  MoviesActionKeys,
+} from '@/store/modules/movies/actions';
 import { ISelectable } from '@/types';
+import {
+  MoviesMutationKeys,
+  MoviesMutations,
+} from '@/store/modules/movies/mutations';
+import { moviesStoreKey as namespace } from '@/store/modules/movies/state';
+import { MoviesGetterKeys } from '@/store/modules/movies/getters';
 
 @Component({
   name: 'nr-search-by',
   components: { NrRadio },
 })
 export default class NrSearchBy extends Vue {
-  @Getter('searchBy', { namespace: 'movies' }) searchBy!: string;
-  @Getter('genres', { namespace: 'movies' }) genres!: string[];
-  @Mutation('setSearchBy', { namespace: 'movies' }) setSearchBy: any;
-  @Action('loadMovies', { namespace: 'movies' })
-  loadMovies!: MoviesActions<'loadMovies'>;
-  @Action('loadGenres', { namespace: 'movies' })
-  loadGenres!: MoviesActions<'loadGenres'>;
+  @Getter(MoviesGetterKeys.searchBy, { namespace }) searchBy!: string;
+  @Getter(MoviesGetterKeys.genres, { namespace }) genres!: string[];
+
+  @Mutation(MoviesMutationKeys.setSearchBy, { namespace })
+  setSearchBy!: MoviesMutations<MoviesMutationKeys.setSearchBy>;
+
+  @Action(MoviesActionKeys.loadMovies, { namespace })
+  loadMovies!: MoviesActions<MoviesActionKeys.loadMovies>;
+
+  @Action(MoviesActionKeys.loadGenres, { namespace })
+  loadGenres!: MoviesActions<MoviesActionKeys.loadGenres>;
 
   get options(): ISelectable[] {
     return [
