@@ -5,7 +5,7 @@ export const moviesStoreKey = 'movies';
 export type MoviesState = {
   movies: IMovie[];
   genres: string[];
-  selectedMovieId?: string | null;
+  selectedMovie?: IMovie | null;
   search: string;
   searchBy: string;
   sortBy: string;
@@ -14,8 +14,8 @@ export type MoviesState = {
 export const state: MoviesState = {
   movies: [],
   genres: [],
-  selectedMovieId: null,
+  selectedMovie: null,
   search: '',
   searchBy: '',
-  sortBy: 'date',
+  sortBy: 'release_date',
 };

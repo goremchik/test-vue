@@ -1,5 +1,5 @@
 import { isInView } from '@/utils/html';
-import { DirectiveOptions } from 'vue/types/options';
+import { DirectiveOptions, DirectiveBinding } from 'vue/types/options';
 import { EmptyCallback } from '@/types';
 
 const callbackKey = Symbol('callback');
@@ -24,7 +24,7 @@ export class ImageLazyLoadDirective implements DirectiveOptions {
     { threshold: [0] }
   );
 
-  inserted = (el: HTMLElement, binding: any): void => {
+  inserted(el: HTMLElement, binding: DirectiveBinding): void {
     const img = el as ImgWithListeners;
     const src = binding.value;
 
@@ -44,17 +44,17 @@ export class ImageLazyLoadDirective implements DirectiveOptions {
     img[callbackKey] = callback;
 
     this.io.observe(img);
-  };
+  }
 
-  update(el: HTMLElement, binding: any): void {
+  update(el: HTMLElement, binding: DirectiveBinding): void {
     const src = binding.value;
     el.dataset.src = src;
     (el as HTMLImageElement).src = src;
   }
 
-  unbind = (el: HTMLElement): void => {
+  unbind(el: HTMLElement): void {
     const img = el as ImgWithListeners;
     this.io.unobserve(img);
     img[finishedKey] = true;
-  };
+  }
 }

@@ -33,8 +33,8 @@ export const mutations = {
   [MoviesMutationKeys.setSortBy](state: MoviesState, sortBy = ''): void {
     state.sortBy = sortBy;
   },
-  [MoviesMutationKeys.selectMovie](state: MoviesState, movieId: string): void {
-    state.selectedMovieId = movieId;
+  [MoviesMutationKeys.selectMovie](state: MoviesState, movie: IMovie): void {
+    state.selectedMovie = movie;
   },
 };
 
