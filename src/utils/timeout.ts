@@ -21,3 +21,11 @@ export function throttle(callback: AnyCallback, wait: number): AnyCallback {
     }
   };
 }
+
+export function debounce(callback: AnyCallback, wait: number) {
+  let timerId: ReturnType<typeof setTimeout>;
+  return (...args: unknown[]): void => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => callback(...args), wait);
+  };
+}

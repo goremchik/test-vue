@@ -32,7 +32,12 @@ export default class NrInput extends Vue {
   @Prop({ default: '' }) label!: string;
   @Prop({ default: '' }) placeholder!: string;
   @Prop({ required: true }) name!: string;
+  @Prop({ default: '' }) defaultValue!: string;
   value = '';
+
+  mounted(): void {
+    this.value = this.defaultValue;
+  }
 
   @Emit('clicked')
   onButtonClick(): void {

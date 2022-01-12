@@ -1,12 +1,12 @@
 import NrMovieCard from '@/components/movie/MovieCard.vue';
-import movie from '@/mock/movie';
+import movies from '@/mock/movies';
 
 export default { title: 'MovieCard' };
 
 export const movieCard = (): unknown => ({
   components: { NrMovieCard },
   computed: {
-    args: () => ({ movie }),
+    args: () => ({ movie: movies[0] }),
   },
   template: `
     <nr-movie-card
