@@ -28,3 +28,14 @@ export interface IBareMovie {
   genres: string[];
   runtime: number;
 }
+
+export interface IAdapter {
+  get<T>(path: string, config?: Record<string, unknown>): Promise<T>;
+}
+
+export interface IMoviesResponse {
+  data: IBareMovie[];
+  total: number;
+  offset: number;
+  limit: number;
+}

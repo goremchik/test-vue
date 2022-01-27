@@ -42,8 +42,8 @@ export default class NrSortBy extends Vue {
 
   get options(): ISelectable[] {
     return [
-      { value: 'release', text: 'Release date' },
-      { value: 'rating', text: 'Rating' },
+      { value: 'release_date', text: 'Release date' },
+      { value: 'vote_average', text: 'Rating' },
     ];
   }
 

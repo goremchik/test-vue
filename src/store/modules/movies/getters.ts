@@ -23,14 +23,10 @@ export const getters = {
   [MoviesGetterKeys.sortBy]: (state: MoviesState): string => state.sortBy || '',
   [MoviesGetterKeys.moviesNumber]: (
     _: MoviesState,
-    movieGetters: any
+    movieGetters: Record<MoviesGetterKeys, any>
   ): number => movieGetters.movies.length,
-  [MoviesGetterKeys.selectedMovie]: (
-    state: MoviesState,
-    movieGetters: any
-  ): IMovie | null =>
-    movieGetters.movies.find(({ id }: any) => id === state.selectedMovieId) ||
-    null,
+  [MoviesGetterKeys.selectedMovie]: (state: MoviesState): IMovie | null =>
+    state.selectedMovie || null,
 };
 
 export type MoviesGetters<K extends MoviesGetterKeys> = Getters<
