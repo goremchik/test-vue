@@ -1,16 +1,18 @@
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
+import Vue from 'vue';
 import { ApiAdapter } from '@/adapters/api.adapters';
+import VueResource from 'vue-resource';
 chai.use(spies);
+Vue.use(VueResource);
 
 describe('ApiAdapter', () => {
   const body = {};
   const res = { body };
-  const stubHttpClient = { get: () => Promise.resolve(res), options: {} };
-  const adapter = new ApiAdapter(stubHttpClient as any);
+  const adapter = new ApiAdapter();
   const url = 'url';
 
-  const spy = chai.spy.on(stubHttpClient, 'get');
+  const spy = chai.spy.on(Vue.http, 'get', () => Promise.resolve(res));
 
   it('should make HTTP GET request', async () => {
     const data = await adapter.get(url);
