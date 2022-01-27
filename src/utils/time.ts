@@ -9,5 +9,8 @@ export function duration(input: number | string = 0): string {
     hours = Math.floor(duration / MINUTES_IN_HOUR);
   }
 
-  return `${hours ? hours + 'h ' : ''}${minutes} min`;
+  const hoursStr = hours ? hours + 'h ' : '';
+  const minStr = hoursStr && !minutes ? '' : `${minutes} min`;
+
+  return `${hoursStr}${minStr}`;
 }
