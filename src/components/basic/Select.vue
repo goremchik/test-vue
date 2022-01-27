@@ -35,8 +35,9 @@ export default class NrSelect extends Vue {
   }
 
   onSelect(e: InputEvent): void {
-    const target: HTMLInputElement | null = e.target as HTMLInputElement;
-    this.onChange(target?.value || '');
+    const target: HTMLInputElement = e.target as any;
+    const val = (target && target.value) || '';
+    this.onChange(val);
   }
 }
 </script>

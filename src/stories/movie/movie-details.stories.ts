@@ -1,5 +1,5 @@
 import NrMovieDetails from '@/components/movie/MovieDetails.vue';
-import movies from '@/mock/movies';
+import movies from '@mock/movies';
 
 export default { title: 'MovieDetails' };
 

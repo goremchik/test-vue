@@ -1,5 +1,5 @@
 import NrMovieCard from '@/components/movie/MovieCard.vue';
-import movies from '@/mock/movies';
+import movies from '@mock/movies';
 
 export default { title: 'MovieCard' };
 
