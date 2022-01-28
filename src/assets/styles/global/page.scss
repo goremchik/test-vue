@@ -20,3 +20,14 @@
 .page {
   padding-bottom: $footer-height;
 }
+
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - $footer-height);
+
+  &__title {
+    font-size: 32px;
+  }
+}

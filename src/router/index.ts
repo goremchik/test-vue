@@ -14,10 +14,13 @@ const routes: Array<RouteConfig> = [
     name: 'Details',
     component: () => import('../views/Details.vue'),
   },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'PageNotFound',
+    component: () => import('../views/PageNotFound.vue'),
+  },
 ];
 
-const router = new VueRouter({
-  routes,
-});
+const router = new VueRouter({ routes, mode: 'history' });
 
 export default router;

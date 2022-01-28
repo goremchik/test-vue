@@ -17,7 +17,7 @@ describe('Utils: timeout', () => {
       await delay(9);
       func();
       expect(spy).to.have.not.been.called();
-      await delay(11);
+      await delay(12);
       expect(spy).to.have.been.called();
     });
   });
@@ -32,7 +32,7 @@ describe('Utils: timeout', () => {
       await delay(3);
       func();
       expect(spy).to.have.not.been.called();
-      await delay(7);
+      await delay(8);
       expect(spy).to.have.been.called();
     });
   });

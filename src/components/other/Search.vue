@@ -40,6 +40,17 @@ export default class NrSearch extends Vue {
   @Mutation(MoviesMutationKeys.setSearch, { namespace })
   setSearch!: MoviesMutations<MoviesMutationKeys.setSearch>;
 
+  mounted(): void {
+    if (!this.$route) {
+      return;
+    }
+
+    const search = this.$route.query.search || '';
+    if (search) {
+      this.setSearch(search as string);
+    }
+  }
+
   onSubmit(e: Event): void {
     e.preventDefault();
     this.onSearch();
@@ -47,6 +58,7 @@ export default class NrSearch extends Vue {
 
   onSearch(): void {
     this.loadMovies();
+    this.$router.replace({ query: { search: this.search } });
   }
 
   onChange = debounce(this.setSearch, 200);
