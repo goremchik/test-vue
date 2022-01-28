@@ -9,7 +9,7 @@ export enum MoviesGetterKeys {
   searchBy = 'searchBy',
   sortBy = 'sortBy',
   moviesNumber = 'moviesNumber',
-  selectedMovie = 'find',
+  selectedMovie = 'selectedMovie',
 }
 
 export const getters = {

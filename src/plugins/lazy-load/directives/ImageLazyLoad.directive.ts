@@ -24,7 +24,7 @@ export class ImageLazyLoadDirective implements DirectiveOptions {
     { threshold: [0] }
   );
 
-  inserted(el: HTMLElement, binding: DirectiveBinding): void {
+  inserted = (el: HTMLElement, binding: DirectiveBinding): void => {
     const img = el as ImgWithListeners;
     const src = binding.value;
 
@@ -44,7 +44,7 @@ export class ImageLazyLoadDirective implements DirectiveOptions {
     img[callbackKey] = callback;
 
     this.io.observe(img);
-  }
+  };
 
   update(el: HTMLElement, binding: DirectiveBinding): void {
     const src = binding.value;

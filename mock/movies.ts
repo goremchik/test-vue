@@ -1,0 +1,32 @@
+export default [
+  {
+    id: '447365',
+    title: 'Guardians of the Galaxy Vol. 3',
+    rating: 4,
+    releaseDate: new Date('2020-05-01'),
+    poster: 'https://image.tmdb.org/t/p/w500/ldoY4fTZkGISMidNw60GHoNdgP8.jpg',
+    description: 'The third film based',
+    genres: ['Action', 'Adventure'],
+    duration: 122,
+  },
+  {
+    id: '424785',
+    title: 'Transformers 7',
+    rating: 3,
+    releaseDate: new Date('2019-06-26'),
+    poster: 'https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg',
+    description: 'Plot unknown.',
+    genres: ['Science Fiction', 'Action', 'Adventure'],
+    duration: 60,
+  },
+  {
+    id: '299534',
+    title: 'Untitled Avengers',
+    rating: 5,
+    releaseDate: new Date('2019-04-24'),
+    poster: 'https://image.tmdb.org/t/p/w500/aMETsaNNcDc6g5ZatQtVbySnSaA.jpg',
+    description: 'The culmination of the Marvel Cinematic Universe.',
+    genres: ['Action', 'Adventure', 'Science Fiction'],
+    duration: 123,
+  },
+];
