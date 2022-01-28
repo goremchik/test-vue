@@ -1,12 +1,12 @@
 describe('Details', () => {
   it('should render 10 suggested movies', () => {
-    cy.visit('/#/details/447365');
+    cy.visit('/details/447365');
     cy.get('.movies__item').should('have.length', 10);
     cy.get('.movies__highlight').should('be', '10');
   });
 
   it('should render movie details', () => {
-    cy.visit('/#/details/447365');
+    cy.visit('/details/447365');
     cy.get('.movie-details__title')
       .first()
       .should('be', 'Guardians of the Galaxy Vol. 3');

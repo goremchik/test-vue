@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from 'vue-property-decorator';
+import { Component, Prop, Vue, Emit, Watch } from 'vue-property-decorator';
 import NrButton from './Button.vue';
 
 @Component({
@@ -47,6 +47,11 @@ export default class NrInput extends Vue {
   @Emit('changed')
   onInputChange(): void {
     // Empty
+  }
+
+  @Watch('defaultValue')
+  onValueChanged(val: string): void {
+    this.value = val;
   }
 }
 </script>

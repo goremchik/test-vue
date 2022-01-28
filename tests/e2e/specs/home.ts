@@ -17,6 +17,6 @@ describe('Home', () => {
     cy.visit('/');
     cy.get('.movie-card__link').first().click();
     cy.wait(200);
-    cy.location('hash').should('eq', '#/details/447365');
+    cy.location('pathname').should('eq', '/details/447365');
   });
 });

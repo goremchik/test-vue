@@ -46,15 +46,15 @@ export class ImageLazyLoadDirective implements DirectiveOptions {
     this.io.observe(img);
   };
 
-  update(el: HTMLElement, binding: DirectiveBinding): void {
+  update = (el: HTMLElement, binding: DirectiveBinding): void => {
     const src = binding.value;
     el.dataset.src = src;
     (el as HTMLImageElement).src = src;
-  }
+  };
 
-  unbind(el: HTMLElement): void {
+  unbind = (el: HTMLElement): void => {
     const img = el as ImgWithListeners;
     this.io.unobserve(img);
     img[finishedKey] = true;
-  }
+  };
 }
